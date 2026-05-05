@@ -29,8 +29,6 @@ dependencies = [
     { name = "jinja2" },
     { name = "markupsafe" },
     { name = "pefile" },
-    { name = "pyinstaller" },
-    { name = "pyinstaller-hooks-contrib" },
     { name = "pyqt5" },
     { name = "pyqt5-qt5" },
     { name = "pyqt5-sip" },
@@ -43,6 +41,8 @@ dependencies = [
 [package.dev-dependencies]
 dev = [
     { name = "mypy" },
+    { name = "pyinstaller" },
+    { name = "pyinstaller-hooks-contrib" },
     { name = "ruff" },
 ]
 
@@ -57,8 +57,6 @@ requires-dist = [
     { name = "jinja2", specifier = "==3.1.6" },
     { name = "markupsafe", specifier = "==3.0.3" },
     { name = "pefile", specifier = "==2024.8.26" },
-    { name = "pyinstaller", specifier = "==6.20.0" },
-    { name = "pyinstaller-hooks-contrib", specifier = "==2026.5" },
     { name = "pyqt5", specifier = "==5.15.11" },
     { name = "pyqt5-qt5", specifier = "==5.15.18" },
     { name = "pyqt5-sip", specifier = "==12.18.0" },
@@ -71,6 +69,8 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.20.2" },
+    { name = "pyinstaller", specifier = ">=6.20.0" },
+    { name = "pyinstaller-hooks-contrib", specifier = ">=2026.5" },
     { name = "ruff", specifier = ">=0.15.12" },
 ]
 
