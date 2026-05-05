@@ -1,5 +1,4 @@
 import Constant
-from Objects.Hierarchy import Hierarchy
 
 def find_individuals_of_class_return_idThing(onto, name_class, filter):
 

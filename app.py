@@ -1847,7 +1847,7 @@ class MainWindow:
 
                 try:
                     pef_req = cf.pef_req.toPlainText()
-                except Exception as e:
+                except Exception:
                     pef_req = edt_req.performance_req
 
                 DB_Loss_Scenario_Req.update(edt_req.id, cause, recommendation, mechanism, pef_req)
@@ -1986,7 +1986,7 @@ class MainWindow:
 
                 try:
                     performance_req = req.pef_req.toPlainText()
-                except Exception as e:
+                except Exception:
                     performance_req = edt_req.performance_req
 
                 DB_Sec_Stride_Requirement.update(edt_req.id, title, description, justification, mechanism, priority, "", performance_req)
@@ -2609,7 +2609,7 @@ class MainWindow:
 
                 try:
                     performance_req = req.pef_req.toPlainText()
-                except Exception as e:
+                except Exception:
                     performance_req = edt_req.performance_req
 
                 DB_Sec_Stride_Requirement.update(edt_req.id, title, description, justification, mechanism, priority, "", performance_req)
@@ -2878,7 +2878,7 @@ class MainWindow:
 
                 try:
                     performance_req = cf.pef_req.toPlainText()
-                except Exception as e:
+                except Exception:
                     performance_req = ""
 
                 DB_Loss_Scenario_Req.update(edt_req.id, cause, recommendation, mechanism, performance_req)
@@ -4888,7 +4888,7 @@ class MainWindow:
                 col = column + uca.id_uca_type - 1
                 cell = self.ui.tablewidget_third_context.item(row, col).text()
                 text = " UR-" + str(pos)
-                if not text in cell:
+                if text not in cell:
                     self.ui.tablewidget_third_context.setItem(row, col, QTableWidgetItem(cell + text))
 
     def find_hazardous_UCA_Cell(self, row, column, context_list):
@@ -4907,7 +4907,7 @@ class MainWindow:
                 col = column + uca.id_uca_type - 1
                 cell = self.ui.tablewidget_third_context.item(row, col).text()
                 text = " UC-" + str(pos)
-                if not text in cell:
+                if text not in cell:
                     self.ui.tablewidget_third_context.setItem(row, col, QTableWidgetItem(cell + text))
 
     def find_hazardous_UCA_Safe(self, row, column, context_list):
@@ -4926,7 +4926,7 @@ class MainWindow:
                 col = column + uca.id_uca_type - 1
                 cell = self.ui.tablewidget_third_context.item(row, col).text()
                 text = " NH " + str(pos)
-                if not text in cell:
+                if text not in cell:
                     self.ui.tablewidget_third_context.setItem(row, col, QTableWidgetItem(text + cell))
                     if cell != "":
                         self.ui.tablewidget_third_context.item(row, col).setBackground(
@@ -6323,7 +6323,7 @@ class MainWindow:
             pos = self.ui.listwidget_second_links_act.row(item)
             list_link_to_verify.append(list_links_actions_controller[pos])
 
-        list_feedback = DB_Components_Links.select_all_control_actions_in_link(list_link_to_verify);
+        list_feedback = DB_Components_Links.select_all_control_actions_in_link(list_link_to_verify)
         if len(list_feedback) > 0:
             if len(list_feedback) == 1:
                 msg = "There is a conflict that must be solved before do this action: \n"
@@ -6365,7 +6365,7 @@ class MainWindow:
             pos = self.ui.listwidget_second_links_act.row(item)
             list_link_to_verify.append(list_links_actions_controller[pos])
 
-        list_feedback = DB_Components_Links.select_all_control_actions_in_link(list_link_to_verify);
+        list_feedback = DB_Components_Links.select_all_control_actions_in_link(list_link_to_verify)
         if len(list_feedback) > 0:
             if len(list_feedback) == 1:
                 msg = "There is a conflict that must be solved before do this action: \n"

@@ -1,5 +1,4 @@
 import Constant
-from Constant import LINK_HLC_CONTROLLER
 
 elements = {}
 saf_elements = {}

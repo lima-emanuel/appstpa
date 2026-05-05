@@ -3,7 +3,6 @@ from sqlite3 import Error
 
 import Constant
 from Objects.Hazard import Hazard, Hazard_Loss
-from Objects.Loss import Loss
 
 # make a connection
 def create_connection():

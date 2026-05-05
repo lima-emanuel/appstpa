@@ -1,14 +1,9 @@
-import datetime
 
 import Constant
-from Database import DB
-from Database.safety import DB_Hazards, DB_Components_Links, DB_Actions, DB_Components, DB_Losses, \
-    DB_Safety_Constraints, DB_Variables, DB_Variables_Values, DB_Projects, DB_Goals, DB_Actions_Components, \
-    DB_Assumptions, DB_UCA
+from Database.safety import DB_Components_Links, DB_Components, DB_Variables, DB_Variables_Values, DB_Actions_Components
 from Objects.Loss import Loss_Scenery
-from Objects.Requirement import Requirement
 from Objects.Var_Values_Aux import Var_Name_Val, Var_Context_list
-from Tools import General_tools, Dictionary
+from Tools import General_tools
 
 
 # present the analysis of safety requirements

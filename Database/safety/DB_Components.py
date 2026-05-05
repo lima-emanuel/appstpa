@@ -2,7 +2,7 @@ import sqlite3
 from sqlite3 import Error
 
 import Constant
-from Database.safety import DB_Components_Links, DB_Variables, DB_Actions_Components, DB_Responsibility
+from Database.safety import DB_Components_Links, DB_Variables, DB_Actions_Components
 from Objects.Component import Component, Component_small
 
 

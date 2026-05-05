@@ -4,7 +4,6 @@ from sqlite3 import Error
 import Constant
 from Objects.Component import Component_Link, Component_Link_Var, Component_Link_Onto, Component_Link_Var_HLC, \
     Component_Link_Ext, Component_Link_Stride
-from Objects.Goal import Goal
 
 
 # make a connection

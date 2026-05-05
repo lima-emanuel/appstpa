@@ -6,7 +6,6 @@ import Constant
 
 # make a connection
 from Database.performance import DB_Saf_Pef_Requirement
-from Database.safety import DB_UCA
 from Objects.Loss_Scenario_Req import Loss_Scenario_Req
 
 

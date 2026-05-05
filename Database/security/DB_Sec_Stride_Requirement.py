@@ -4,7 +4,6 @@ import Constant
 
 
 # make a connection
-from Objects.security.Stride import Stride
 from Objects.security.Stride_Requirement import Stride_Requirement
 from Objects.security.Stride_control import Stride_control
 

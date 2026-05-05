@@ -4,7 +4,7 @@ import Constant
 
 
 # make a connection
-from Objects.Performance.Pef_Requirement import Saf_Pef_UCA, Pef_Saf_Resource, Pef_Bus_Resource
+from Objects.Performance.Pef_Requirement import Pef_Bus_Resource
 
 
 def create_connection():
@@ -101,5 +101,5 @@ def select_by_requirement_without_connection(cur, id_bus_requirement, id_resourc
         for row in rows:
             result_list.append(Pef_Bus_Resource(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7]))
         return result_list
-    except Exception as e:
+    except Exception:
         return result_list

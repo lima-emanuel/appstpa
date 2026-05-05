@@ -3,7 +3,6 @@ from sqlite3 import Error
 
 import Constant
 from Objects.Assumptions import Assumptions
-from Objects.Goal import Goal
 
 
 # make a connection

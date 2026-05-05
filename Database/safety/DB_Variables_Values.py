@@ -2,13 +2,9 @@ import sqlite3
 from sqlite3 import Error
 
 import Constant
-from Objects.Action import Action,Action_Component
-from Objects.Component import Component
-from Objects.Loss import Loss
 
 
 # make a connection
-from Objects.Variables import Variables
 from Objects.Variable_Values import Variable_Values
 
 

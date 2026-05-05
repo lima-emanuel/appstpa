@@ -1,6 +1,4 @@
 import Constant
-from Objects.security.Stride_control import Stride_control
-from Tools import General_tools
 
 
 def get_dfd_element_only(onto, name_comp):

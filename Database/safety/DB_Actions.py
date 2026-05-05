@@ -3,8 +3,6 @@ from sqlite3 import Error
 
 import Constant
 from Objects.Action import Action
-from Objects.Component import Component
-from Objects.Loss import Loss
 
 
 # make a connection
