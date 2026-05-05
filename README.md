@@ -1,7 +1,9 @@
 # AppSTPA
 
 This is the latest version of AppSTPA by [Andrei Carniel](https://github.com/andrei-carniel).
-This fork only fixes a few bugs. Below, the original README.
+This fork fixes a few bugs and provides standalone binaries.
+To use it, just download the app appropriate for your OS on the [releases](https://github.com/lima-emanuel/appstpa/releases) page.
+Below, the original README.
 
 ---
 

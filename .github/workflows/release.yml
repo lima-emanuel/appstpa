@@ -1,0 +1,148 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to publish the release for (e.g., v3.0.1). Must already exist."
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build-linux:
+    name: build-linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # On workflow_dispatch, build from the provided tag. On tag push, use the tag ref automatically.
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.13"
+          python-version: 3.12
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --all-groups
+
+      - name: Build the binary
+        run: |
+          uv run pyinstaller --onefile --windowed --name "AppSTPA-Linux-x86" app.py
+          mv dist/AppSTPA-Linux-x86 .
+          zip -r AppSTPA-Linux-x86.zip AppSTPA-Linux-x86 Database/*.db
+
+      - name: Release the binary
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref,
+          'refs/tags/')
+        uses: softprops/action-gh-release@v3
+        with:
+          fail_on_unmatched_files: true
+          files: AppSTPA-Linux-x86.zip
+          tag_name:
+            ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
+          name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
+
+  build-windows:
+    name: build-windows
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # On workflow_dispatch, build from the provided tag. On tag push, use the tag ref automatically.
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.13"
+          python-version: 3.12
+
+      - name: Debug - Python version and arch
+        run: python -c "import sys, platform; print(sys.platform, platform.machine())"
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --all-groups -vv
+
+      - name: Build the binary
+        run: |
+          uv run pyinstaller --onefile --windowed --name "AppSTPA-Windows-x86" app.py
+          Move-Item -Path ".\dist\AppSTPA-Windows-x86.exe" -Destination ".\AppSTPA-Windows-x86.exe"
+          Compress-Archive -Path ".\Database\*.db", ".\AppSTPA-Windows-x86.exe" -DestinationPath "AppSTPA-Windows-x86.zip"
+
+      - name: Release the binary
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref,
+          'refs/tags/')
+        uses: softprops/action-gh-release@v3
+        with:
+          fail_on_unmatched_files: true
+          files: AppSTPA-Windows-x86.zip
+          tag_name:
+            ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
+          name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
+
+  build-macos:
+    name: build-macos
+    runs-on: macos-latest
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # On workflow_dispatch, build from the provided tag. On tag push, use the tag ref automatically.
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+
+      - name: "Set up Python"
+        uses: actions/setup-python@v6
+        with:
+          python-version-file: ".python-version"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          version: "0.11.13"
+          python-version: 3.12
+
+      - name: Install the project
+        run: uv sync --locked --all-extras --all-groups
+
+      - name: Build the binary
+        run: |
+          uv run pyinstaller --onefile --windowed --name "AppSTPA-MacOS-ARM" app.py
+          mv dist/AppSTPA-MacOS-ARM .
+          zip -r AppSTPA-MacOS-ARM.zip AppSTPA-MacOS-ARM Database/*.db
+
+      - name: Release the binary
+        if: github.event_name == 'workflow_dispatch' || startsWith(github.ref,
+          'refs/tags/')
+        uses: softprops/action-gh-release@v3
+        with:
+          fail_on_unmatched_files: true
+          files: AppSTPA-MacOS-ARM.zip
+          tag_name:
+            ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
+          name: ${{ github.event_name == 'workflow_dispatch' && inputs.tag ||
+            github.ref_name }}
