@@ -21,10 +21,10 @@ GIF_LOADING_PATH = "Images/Loading_Gear_400px.gif"
 DEFAULT_IMAGE_PATH = "Images/image.png"
 IMAGE_STPA_LOSS = "Images/new_loss_scenarios_division.png"
 PATH_REPORT = "Reports\\"
-VERSION = "3.0.0"
+VERSION = "3.0.1"
 
 # Java complete path
-#JAVA_PATH = "C:\\Program Files\\Java\\jre1.8.0_281\\bin\\java.exe"
+# JAVA_PATH = "C:\\Program Files\\Java\\jre1.8.0_281\\bin\\java.exe"
 
 # RESERVED words
 SAFETY = "SAFETY"

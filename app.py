@@ -1536,7 +1536,7 @@ class MainWindow:
 
         msg = "This is a doctoral work by Andrei Carniel, under the supervision of Prof. Celso Hirata, at Instituto Tecnológico de Aeronáutica - ITA." \
               "\n\nYou are not authorized to share this software. After using the software, delete it." \
-              "\n\nFor more information, please send an e-mail to andrei.carniel@ga.ita.br and hirata@ita.br." \
+              "\n\nFor more information, please send an e-mail to andrei.carniel@gmail.com and hirata@ita.br." \
               "\n\nSupport material: STPA Handbook, by the authors: Nancy G. Leveson and John P. Thomas." \
               "\n\n\nSoftware version " + Constant.VERSION
 
@@ -8334,4 +8334,3 @@ if __name__ == '__main__':
     main_win.load_projects()
 
     sys.exit(app.exec_())
-
